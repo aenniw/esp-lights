@@ -1,0 +1,31 @@
+{
+  "name": "esp-mdns-lights",
+  "version": "0.9.0",
+  "description": "Android App for discovery/control of ESP based lights.",
+  "author": "aenniw@gmail.com",
+  "private": false,
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "build": "rm -rf ./dist; expo export --public-url wip.com",
+    "eject": "expo eject"
+  },
+  "dependencies": {
+    "expo": "^31.0.0",
+    "i18n-js": "3.1.0",
+    "react": "16.5.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
+    "react-native-base64": "0.0.2",
+    "react-native-code-push": "^5.5.1",
+    "react-native-color": "0.0.10",
+    "react-native-paper": "2.1.3",
+    "react-native-status-bar-height": "2.2.0",
+    "react-native-vector-icons": "^6.1.0",
+    "react-native-zeroconf": "0.9.0",
+    "tinycolor2": "1.4.1"
+  },
+  "devDependencies": {
+    "expo-cli": "^2.6.14"
+  }
+}

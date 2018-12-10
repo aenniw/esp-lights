@@ -1,0 +1,15 @@
+{
+  "settings": "Settings",
+  "recent": "Recent",
+  "done": "Done",
+  "cancel": "Cancel",
+  "color": "Color",
+  "colors": "Colors",
+  "user": "User",
+  "password": "Password",
+  "mdns": "MDNS name",
+  "mode": "Mode",
+  "speed": "Speed",
+  "brightness": "Brightness",
+  "nodevice": "No device found"
+}
