@@ -1,5 +1,10 @@
 package-lock.json
 node_modules/
 .expo/
-android/
 dist/
+build/
+.gradle/
+.idea/
+*.iml
+release/
+local.properties

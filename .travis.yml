@@ -1,12 +1,32 @@
-language: node_js
-sudo: false
-node_js:
-  - 10
-  - 9
-  - 8
+language: android
+jdk: oraclejdk8
+sudo: required
+
+android:
+  components:
+    - platform-tools
+    - tools
+    - build-tools-23.0.1
+    - android-23
+    - extra-android-m2repository
+    - extra-google-google_play_services
+    - extra-google-m2repository
+
+licenses:
+  - android-sdk-preview-license-.+
+  - android-sdk-license-.+
+  - google-gdk-license-.+
+
+before_install:
+  - yes | sdkmanager "platforms;android-27"
 
 install:
+  - nvm install 10
   - npm install
 
 script:
-  - npm run build
+  - cd android && ./gradlew clean && ./gradlew assembleDebug
+
+branches:
+  only:
+    - master
