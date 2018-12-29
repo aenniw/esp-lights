@@ -1,0 +1,23 @@
+{
+  "settings": "Nastavenia",
+  "recent": "Nedávne",
+  "done": "Ok",
+  "cancel": "Zrušiť",
+  "color": "Farba",
+  "colors": "Farby",
+  "user": "Použivateľ",
+  "password": "Heslo",
+  "mdns": "MDNS názov",
+  "mode": "Mód",
+  "speed": "Rýchlosť",
+  "brightness": "Jas",
+  "nodevice": "Žiadne zariadenie",
+  "update": "Nájsť aktualizacie",
+  "animations": {
+    "color": "Farba",
+    "rainbow-1": "Dúha 1",
+    "rainbow-2": "Dúha 2",
+    "switch-1": "Blikanie 1",
+    "switch-2": "Blikanie 2"
+  }
+}

@@ -9,12 +9,12 @@ import {
   Button
 } from "react-native";
 import { Card } from "react-native-paper";
-import { getStatusBarHeight } from "react-native-status-bar-height";
 import Device from "./components/screens/Device";
 import Settings from "./components/screens/Settings";
 import { Mdns, Requests } from "./components/common/Common";
 import SettingsStore from "./components/common/Settings";
 import Locale from "./components/common/Locale";
+import codePush from "react-native-code-push";
 
 const Tabs = { Device: "device", Settings: "settings" };
 const Window = Dimensions.get("window");
@@ -49,6 +49,7 @@ export default class App extends React.Component {
   }
 
   componentWillMount() {
+    codePush.notifyAppReady();
     SettingsStore.getMDNS(mdns => {
       Mdns.setMdns(mdns);
       Mdns.start(this.addDevice, this.removeDevice);
@@ -58,7 +59,7 @@ export default class App extends React.Component {
         Requests.setAuth(user, pass);
       });
     });
-    this.addDevice("192.168.43.17");
+    if (__DEV__) this.addDevice("nop-device");
   }
 
   componentWillUnmount() {
@@ -71,7 +72,6 @@ export default class App extends React.Component {
 
   render() {
     const { devices = [], tab = Tabs.Device, device } = this.state;
-    console.log("render", devices, device);
     return (
       <ScrollView style={styles.container}>
         <Card style={styles.header}>
@@ -120,13 +120,11 @@ export default class App extends React.Component {
 }
 
 const offsets = 10,
-  barHeight = 50,
-  statusBarHeight = getStatusBarHeight();
+  barHeight = 50;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: Window.width,
-    paddingTop: statusBarHeight,
     backgroundColor: "#ecf0f1",
     padding: 8
   },
@@ -137,11 +135,11 @@ const styles = StyleSheet.create({
     lineHeight: barHeight
   },
   content: {
-    minHeight: Window.height - statusBarHeight - 2 * barHeight - 3 * offsets
+    minHeight: Window.height - 2 * barHeight - 4 * offsets
   },
   footer: {
     height: barHeight,
     marginTop: offsets,
-    marginBottom: 2 * offsets
+    marginBottom: offsets
   }
 });
