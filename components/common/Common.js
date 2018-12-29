@@ -29,12 +29,14 @@ export class Mdns {
       mdnsStarted = false;
     });
     zeroconf.on("resolved", ({ host, name }) => {
+      console.log("mdns + ", host, name);
       if (!mdns || mdns.length === 0 || name.indexOf(mdns) >= 0) {
         hosts.push(host);
         found(host);
       }
     });
     zeroconf.on("removed", ({ host, name }) => {
+      console.log("mdns - ", host, name);
       if (!mdns || mdns.length === 0 || name.indexOf(mdns) >= 0) {
         hosts.slice(hosts.indexOf(host), 1);
         removed(host);
@@ -72,6 +74,9 @@ export class Requests {
       .then(json => {
         console.log("GET", host, path, "resp", json);
         return json;
+      })
+      .catch(error => {
+        console.warn(error);
       });
   }
 
@@ -90,6 +95,9 @@ export class Requests {
       .then(json => {
         console.log("POST", host, path, "resp", json);
         return json;
+      })
+      .catch(error => {
+        console.warn(error);
       });
   }
 }
