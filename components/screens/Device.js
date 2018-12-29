@@ -65,7 +65,25 @@ export default class Device extends React.Component {
       });
     };
 
-    const { device } = this.props;
+    this.componentWillReceiveProps(props);
+  }
+
+  componentWillReceiveProps({ device }) {
+    if (device) {
+      LightRequests.getConfig(device).then(({ color, mode, ...other }) =>
+        this.setState({
+          ...other,
+          color: d2h(color),
+          mode: other["animation-type"]
+        })
+      );
+      LightRequests.getAnimationColors(device).then(v =>
+        this.setState({
+          colors: v["animation-colors"].map(color => d2h(color))
+        })
+      );
+    }
+
     this.setSpeed = v => {
       LightRequests.setSpeed(device, v).then(({ result }) => {
         if (result) this.setState({ speed: v });
@@ -87,24 +105,6 @@ export default class Device extends React.Component {
     this.setAnimationColors = v => {
       LightRequests.setAnimationColors(device, v.map(color => h2d(color)));
     };
-    this.componentWillReceiveProps(props);
-  }
-
-  componentWillReceiveProps({ device }) {
-    if (device) {
-      LightRequests.getConfig(device).then(({ color, mode, ...other }) =>
-        this.setState({
-          ...other,
-          color: d2h(color),
-          mode: other["animation-type"]
-        })
-      );
-      LightRequests.getAnimationColors(device).then(v =>
-        this.setState({
-          colors: v["animation-colors"].map(color => d2h(color))
-        })
-      );
-    }
   }
 
   pickColor(colorHex) {

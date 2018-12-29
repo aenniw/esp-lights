@@ -79,7 +79,7 @@ export default class SettingsView extends React.Component {
           value={pass}
         />
         <TouchableOpacity onPress={this.checkUpdates}>
-          <Text>Check for updates</Text>
+          <Text>{Locale.getLabel("update")}</Text>
         </TouchableOpacity>
       </View>
     );

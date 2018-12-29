@@ -22,7 +22,11 @@ export default function PickerField({ mode, label, onValueChange, visible }) {
         {Object.keys(LightLabels)
           .map(k => LightLabels[k])
           .map((m, i) => (
-            <Picker.Item key={i} label={m} value={i} />
+            <Picker.Item
+              key={i}
+              label={Locale.getLabel("animations." + m)}
+              value={i}
+            />
           ))}
       </Picker>
     </Field>
