@@ -1,21 +1,19 @@
 import * as React from "react";
-import {
-  Text,
-  View,
-  StyleSheet,
-  TextInput,
-  Dimensions,
-  TouchableOpacity
-} from "react-native";
+import { Text, View, StyleSheet, TextInput, Button } from "react-native";
 import Settings from "../common/Settings";
 import Locale from "../common/Locale";
 import codePush from "react-native-code-push";
 
-function Option({ label, value, onChange }) {
+function Option({ label, value, onChange, secure = false }) {
   return (
     <View style={styles.option}>
       <Text style={styles.optionName}>{label}</Text>
-      <TextInput style={styles.input} onChangeText={onChange} value={value} />
+      <TextInput
+        style={styles.input}
+        onChangeText={onChange}
+        value={value}
+        secureTextEntry={secure}
+      />
     </View>
   );
 }
@@ -77,10 +75,14 @@ export default class SettingsView extends React.Component {
           label={Locale.getLabel("password")}
           onChange={this.persistPass}
           value={pass}
+          secure={true}
         />
-        <TouchableOpacity onPress={this.checkUpdates}>
-          <Text>{Locale.getLabel("update")}</Text>
-        </TouchableOpacity>
+        <View style={styles.button}>
+          <Button
+            title={Locale.getLabel("update")}
+            onPress={this.checkUpdates}
+          />
+        </View>
       </View>
     );
   }
@@ -88,6 +90,7 @@ export default class SettingsView extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     alignItems: "center",
     justifyContent: "center",
     padding: 24
@@ -110,5 +113,10 @@ const styles = StyleSheet.create({
     padding: 4,
     borderWidth: 0.5,
     borderColor: "black"
+  },
+  button: {
+    flex: 1,
+    width: "100%",
+    justifyContent: "flex-end"
   }
 });
