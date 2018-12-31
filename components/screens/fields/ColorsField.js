@@ -40,6 +40,7 @@ export default function ColorsField({
 const styles = StyleSheet.create({
   text: {
     textAlign: "center",
-    fontSize: 50
+    fontSize: 50,
+    color: "white"
   }
 });
