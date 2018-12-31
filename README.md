@@ -46,3 +46,7 @@ Upon deployment key change update [strings.xml](./android/app/src/main/res/value
     <string name="app_name">espmdnslights</string>
 </resources>
 ```
+
+### Assets - Icons
+
+[AndroidAssetStudio](http://romannurik.github.io/AndroidAssetStudio/index.html)
