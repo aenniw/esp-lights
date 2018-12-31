@@ -38,7 +38,7 @@ function SpeedSlider({ value, mode, onSlidingComplete }) {
     <SliderField
       value={value}
       label="speed"
-      min={isRainbowMode(mode) ? 185 : 40}
+      min={isRainbowMode(mode) ? 180 : 0}
       max={isRainbowMode(mode) ? 255 : 180}
       onSlidingComplete={onSlidingComplete}
       visible={mode !== LightModes.Color}
@@ -147,8 +147,7 @@ export default class Device extends React.Component {
   }
 
   render() {
-    const { colors, color, brightness, speed } = this.state,
-      mode = 3;
+    const { mode, colors, color, brightness, speed } = this.state;
     const { device } = this.props;
     if (!device)
       return (

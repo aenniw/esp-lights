@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     lineHeight: barHeight
   },
   content: {
-    minHeight: Window.height - 2 * barHeight - 4 * offsets - 15
+    minHeight: Window.height - 2 * barHeight - 4 * offsets - 30
   },
   footer: {
     height: barHeight,
