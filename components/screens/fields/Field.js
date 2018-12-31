@@ -13,7 +13,6 @@ export default function Field({ label, children, visible = true }) {
 
 const styles = StyleSheet.create({
   field: {
-    minHeight: 50,
     paddingBottom: 40,
     justifyContent: "space-between",
     flexDirection: "row",

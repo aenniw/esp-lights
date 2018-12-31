@@ -49,7 +49,11 @@ export default class App extends React.Component {
   }
 
   componentWillMount() {
-    codePush.notifyAppReady();
+    try {
+      codePush.notifyAppReady();
+    } catch (err) {
+      console.warn(err);
+    }
     SettingsStore.getMDNS(mdns => {
       Mdns.setMdns(mdns);
       Mdns.start(this.addDevice, this.removeDevice);
@@ -135,7 +139,7 @@ const styles = StyleSheet.create({
     lineHeight: barHeight
   },
   content: {
-    minHeight: Window.height - 2 * barHeight - 4 * offsets
+    minHeight: Window.height - 2 * barHeight - 4 * offsets - 15
   },
   footer: {
     height: barHeight,
