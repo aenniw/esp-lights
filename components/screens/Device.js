@@ -38,7 +38,7 @@ function SpeedSlider({ value, mode, onSlidingComplete }) {
     <SliderField
       value={value}
       label="speed"
-      min={isRainbowMode(mode) ? 185 : 80}
+      min={isRainbowMode(mode) ? 185 : 40}
       max={isRainbowMode(mode) ? 255 : 180}
       onSlidingComplete={onSlidingComplete}
       visible={mode !== LightModes.Color}
@@ -147,7 +147,8 @@ export default class Device extends React.Component {
   }
 
   render() {
-    const { mode, colors, color, brightness, speed } = this.state;
+    const { colors, color, brightness, speed } = this.state,
+      mode = 3;
     const { device } = this.props;
     if (!device)
       return (
@@ -202,28 +203,6 @@ const styles = StyleSheet.create({
   container: {
     padding: 24,
     paddingTop: 40
-  },
-  field: {
-    minHeight: 50,
-    paddingBottom: 40,
-    justifyContent: "space-between",
-    flexDirection: "row",
-    alignItems: "flex-start"
-  },
-  fieldName: {
-    width: "35%",
-    fontSize: 18,
-    fontWeight: "bold",
-    textAlign: "right"
-  },
-  fieldValue: {
-    width: "60%"
-  },
-  picker: {
-    height: 28
-  },
-  slider: {
-    height: 28
   },
   nodevice: {
     width: "100%",

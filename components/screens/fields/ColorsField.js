@@ -1,7 +1,24 @@
 import * as React from "react";
-import { StyleSheet, Button } from "react-native";
+import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
 import Locale from "../../common/Locale";
 import Field from "./Field";
+
+function ColorButton({ title, color, onPress }) {
+  const style = StyleSheet.create({
+    container: {
+      height: 75,
+      marginBottom: 5,
+      marginRight: 5,
+      backgroundColor: color
+    }
+  });
+
+  return (
+    <TouchableOpacity onPress={onPress} style={style.container}>
+      <Text style={styles.text}>{title}</Text>
+    </TouchableOpacity>
+  );
+}
 
 export default function ColorsField({
   label,
@@ -13,24 +30,16 @@ export default function ColorsField({
   return (
     <Field label={Locale.getLabel(label)} visible={visible}>
       {colors.map((c, i) => (
-        <Button
-          key={i}
-          style={styles.colorsPicker}
-          title="-"
-          color={c}
-          onPress={() => onRemove(c)}
-        />
+        <ColorButton key={i} title="-" color={c} onPress={() => onRemove(c)} />
       ))}
-      <Button
-        style={styles.colorsPicker}
-        title="+"
-        color="gray"
-        onPress={onToggle}
-      />
+      <ColorButton title="+" color="gray" onPress={onToggle} />
     </Field>
   );
 }
 
 const styles = StyleSheet.create({
-  colorsPicker: {}
+  text: {
+    textAlign: "center",
+    fontSize: 50
+  }
 });
