@@ -4,7 +4,7 @@
     "description": "Android App for discovery/control of ESP based lights.",
     "slug": "snack-S1YKLw314",
     "privacy": "public",
-    "sdkVersion": "31.0.0",
+    "sdkVersion": "32.0.0",
     "version": "0.9.0",
     "orientation": "portrait",
     "primaryColor": "#cccccc",
