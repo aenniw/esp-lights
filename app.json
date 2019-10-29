@@ -4,8 +4,8 @@
     "description": "Android App for discovery/control of ESP based lights.",
     "slug": "snack-S1YKLw314",
     "privacy": "public",
-    "sdkVersion": "32.0.0",
-    "version": "0.9.0",
+    "sdkVersion": "35.0.0",
+    "version": "0.10.0",
     "orientation": "portrait",
     "primaryColor": "#cccccc",
     "icon": "https://d1wp6m56sqw74a.cloudfront.net/~assets/c9aa1be8a6a6fe81e20c3ac4106a2ebc",
@@ -14,10 +14,19 @@
       "hideExponentText": false
     },
     "packagerOpts": {
-      "assetExts": ["ttf", "mp4", "otf", "xml"]
+      "assetExts": [
+        "ttf",
+        "mp4",
+        "otf",
+        "xml"
+      ]
     },
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "platforms": [
+      "android",
+      "ios"
+    ]
   }
 }

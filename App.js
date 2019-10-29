@@ -6,7 +6,8 @@ import {
   StyleSheet,
   Picker,
   Dimensions,
-  Button
+  Button,
+  StatusBar
 } from "react-native";
 import { Card } from "react-native-paper";
 import Device from "./components/screens/Device";
@@ -129,17 +130,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: Window.width,
+    marginTop: StatusBar.currentHeight,
     backgroundColor: "#ecf0f1",
     padding: 8
   },
   header: {
-    marginTop: offsets,
     marginBottom: offsets,
     height: barHeight,
     lineHeight: barHeight
   },
   content: {
-    minHeight: Window.height - 2 * barHeight - 4 * offsets - 30
+    minHeight: Window.height - 2 * barHeight - 3 * offsets
   },
   footer: {
     height: barHeight,
