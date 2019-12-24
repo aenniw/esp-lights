@@ -1,0 +1,63 @@
+{
+  "common": {
+    "version": "Version",
+    "settings": "Settings",
+    "done": "Done",
+    "cancel": "Cancel",
+    "recent": "Recent",
+    "all": "All",
+    "nowifi": "No Wifi connection estabished"
+  },
+  "mdns": {
+    "label": "MDNS",
+    "enable": "Enable discovery",
+    "filter": "Filter"
+  },
+  "credentials": {
+    "label": "Credentials",
+    "user": "User",
+    "password": "Password",
+    "ssid": "SSID"
+  },
+  "devices": {
+    "select": "Select device",
+    "label": "Static devices",
+    "hostname": "Hostname",
+    "none": "No device available",
+    "unselected": "No device selected"
+  },
+  "wizzard": {
+    "label": "New device setup",
+    "setup": "Setup '%{device}' device?",
+    "connect": "Connect to '%{device}' device?",
+    "tooltip": {
+      "connect": "Phone will try to connect to devices Wifi network. (Wifi will be enabled...)",
+      "setup": "Device will be configured to connect to selected Wifi network."
+    },
+    "errors": {
+      "connection": "Unable to connect to device '%{device}'. Try to get close to device or factory reset it.",
+      "auth": "Unable to configure credentials on device. Try to factory reset device.",
+      "wifi": "Unable to connect to specified Wifi network. Check provided credentials.",
+      "networks": "Unable to retrieve Wifi newtworks. Try again in few seconds."
+    }
+  },
+  "camera": {
+    "permission": "Requesting for camera permission",
+    "none": "No access to camera"
+  },
+  "esp": {
+    "color": "Color",
+    "colors": "Colors",
+    "mode": "Mode",
+    "speed": "Speed",
+    "brightness": "Brightness",
+    "animations": {
+      "off": "Off",
+      "color": "Color",
+      "rainbow-1": "Hue",
+      "rainbow-2": "Rainbow",
+      "switch-1": "Your Hue",
+      "switch-2": "Your Glam"
+    }
+  }
+}

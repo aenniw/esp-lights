@@ -1,31 +1,45 @@
 {
-  "name": "esp-mdns-lights",
-  "version": "0.10.0",
-  "description": "Android App for discovery/control of ESP based lights.",
-  "author": "aenniw@gmail.com",
-  "private": false,
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
-    "build": "rm -rf ./dist; expo export --public-url wip.com",
-    "upgrade": "expo upgrade",
-    "eject": "expo eject"
+    "web": "expo start --web",
+    "build": "./build",
+    "eject": "expo eject --non-interactive --eject-method expokit",
+    "link": "./react-link"
   },
   "dependencies": {
-    "expo": "^35.0.0",
-    "i18n-js": "3.3.0",
-    "react": "16.8.3",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
+    "@expo/vector-icons": "^10.0.0",
+    "@josectobar/react-native-iot-wifi": "^1.0.5",
+    "@miblanchard/react-native-slider": "^1.0.1",
+    "@react-native-community/netinfo": "^4.6.0",
+    "@react-navigation/web": "^1.0.0-alpha.9",
+    "expo": "^36.0.0",
+    "expo-asset": "~8.0.0",
+    "expo-barcode-scanner": "~8.0.0",
+    "expo-constants": "~8.0.0",
+    "expo-font": "~8.0.0",
+    "expo-permissions": "~8.0.0",
+    "expo-web-browser": "~8.0.0",
+    "i18n-js": "^3.5.0",
+    "is-ip": "^3.1.0",
+    "react": "16.9.0",
+    "react-dom": "16.9.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
+    "react-native-appearance": "^0.3.1",
     "react-native-base64": "0.0.2",
-    "react-native-code-push": "5.7.0",
     "react-native-color": "0.0.10",
-    "react-native-paper": "3.1.1",
-    "react-native-vector-icons": "6.4.2",
-    "react-native-zeroconf": "0.11.4",
-    "tinycolor2": "1.4.1"
+    "react-native-gesture-handler": "~1.5.0",
+    "react-native-modal": "^11.5.3",
+    "react-native-network-info": "^5.2.1",
+    "react-native-web": "^0.11.7",
+    "react-native-zeroconf": "^0.11.4",
+    "react-navigation": "^3.12.0",
+    "tinycolor2": "^1.4.1"
   },
   "devDependencies": {
-    "expo-cli": "3.4.1"
-  }
+    "babel-preset-expo": "^7.0.0",
+    "expo-cli": "^3.11.3"
+  },
+  "private": true
 }

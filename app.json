@@ -1,32 +1,27 @@
 {
   "expo": {
-    "name": "esp-mdns-lights",
-    "description": "Android App for discovery/control of ESP based lights.",
-    "slug": "snack-S1YKLw314",
+    "name": "ESP Lights",
+    "slug": "esp-lights",
     "privacy": "public",
-    "sdkVersion": "35.0.0",
-    "version": "0.10.0",
+    "sdkVersion": "36.0.0",
+    "platforms": ["android", "web"],
+    "version": "1.0.0",
     "orientation": "portrait",
-    "primaryColor": "#cccccc",
-    "icon": "https://d1wp6m56sqw74a.cloudfront.net/~assets/c9aa1be8a6a6fe81e20c3ac4106a2ebc",
-    "loading": {
-      "icon": "https://d1wp6m56sqw74a.cloudfront.net/~assets/c9aa1be8a6a6fe81e20c3ac4106a2ebc",
-      "hideExponentText": false
+    "icon": "./assets/images/icon.png",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
     },
-    "packagerOpts": {
-      "assetExts": [
-        "ttf",
-        "mp4",
-        "otf",
-        "xml"
-      ]
+    "updates": {
+      "enabled": true,
+      "fallbackToCacheTimeout": 0,
+      "checkAutomatically": "ON_ERROR_RECOVERY"
     },
-    "ios": {
-      "supportsTablet": true
-    },
-    "platforms": [
-      "android",
-      "ios"
-    ]
+    "assetBundlePatterns": ["**/*"],
+    "userInterfaceStyle": "automatic",
+    "android": {
+      "package": "com.github.aenniw.esplights"
+    }
   }
 }
