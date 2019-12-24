@@ -1,0 +1,22 @@
+#!/bin/bash
+
+test -d dist && rm -rf dist
+
+expo export -q --public-url https://aenniw.github.io/esp-lights || \
+    { echo -e "\033[0;31mNPM build failed.\033[0m"; exit 1; }
+
+if [[ -d android/ ]]; then
+    export ANDROID_KEYSTORE_PATH='../../release.jks'
+
+    test -f ${ANDROID_KEYSTORE_PATH##*/} || \
+        echo ${ANDROID_KEYSTORE} | base64 -d > ${ANDROID_KEYSTORE_PATH##*/}
+
+    # expo-kit hack for local builds without expo publish
+    cp dist/android-index.json android/app/src/main/assets/shell-app-manifest.json
+    cp dist/bundles/android-*.js android/app/src/main/assets/shell-app.bundle
+
+    cd android && \
+        ./gradlew app:assembleRelease && \
+        mv app/build/outputs/apk/release/app-release.apk ../esp-lights.apk || \
+        { echo -e "\033[0;31mANDRIOD build failed.\033[0m"; exit 1; }
+fi

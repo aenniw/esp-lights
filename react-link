@@ -1,0 +1,20 @@
+#!/bin/bash
+
+for dep in "react-native-zeroconf" "@josectobar/react-native-iot-wifi" "react-native-network-info"; do
+    react-native link "${dep}"
+done
+
+function replace-color() {
+    sed -i "s#<color name=\"${1}\">.*</color>#<color name=\"${1}\">\#${2}</color>#" android/app/src/main/res/values/colors.xml
+}
+
+function add-permission() {
+    sed -i "/<!-- ADD PERMISSIONS HERE -->/a <uses-permission android:name=\"android.permission.${1}\" />" ./android/app/src/main/AndroidManifest.xml
+}
+
+add-permission 'ACCESS_WIFI_STATE'
+add-permission 'CHANGE_WIFI_MULTICAST_STATE'
+
+replace-color 'colorPrimary' 'ffffff'
+replace-color 'colorPrimaryDark' 'b0b0b0'
+replace-color 'colorAccentLight' 'ffffff'
