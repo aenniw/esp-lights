@@ -21,6 +21,22 @@ import Locale from "../../common/locale";
 
 const host = "192.168.4.1";
 
+function retry(fn, retriesLeft = 8, interval = 1000) {
+  return new Promise((resolve, reject) => {
+    return fn()
+      .then(resolve)
+      .catch(error => {
+        if (retriesLeft === 0) {
+          reject(error);
+          return;
+        }
+        setTimeout(() => {
+          retry(fn, retriesLeft - 1, interval).then(resolve, reject);
+        }, interval);
+      });
+  });
+}
+
 function getAuth({ password }) {
   return Requests.toAuth("admin", password);
 }
@@ -51,16 +67,21 @@ function configureAuth({ password: devicePassword }) {
 
 function configureWifi(props, { ssid, password }) {
   const auth = getAuth(props);
-  return WifiRequests.setConfigSTA(host, { ssid: ssid, pass: password }, auth)
-    .then(
-      () =>
-        new Promise(resolve =>
-          setTimeout(() => resolve(WifiRequests.getConfigSTA(host, auth)), 4000)
-        )
-    )
-    .then(({ status }) => {
-      if (!status) throw "Failed to connect to wifi";
-    });
+  return retry(() => {
+    return WifiRequests.setConfigSTA(host, { ssid: ssid, pass: password }, auth)
+      .then(
+        () =>
+          new Promise(resolve =>
+            setTimeout(
+              () => resolve(WifiRequests.getConfigSTA(host, auth)),
+              1000
+            )
+          )
+      )
+      .then(({ status }) => {
+        if (!status) throw "Failed to connect to wifi";
+      });
+  });
 }
 
 function restartDevice(props) {
