@@ -56,10 +56,10 @@ deploy:
     file_glob: true
     file: esp-lights.apk
     skip_cleanup: true
-
     on:
       tags: true
       branch: master
+
   - provider: pages
     local_dir: dist/
     skip_cleanup: true

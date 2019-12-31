@@ -46,7 +46,7 @@ export default class Mdns {
           mdnsFilter.length === 0 ||
           host.indexOf(mdnsFilter) >= 0) &&
         hosts.indexOf(host) < 0 &&
-        !isIp(host)
+        (isIp(host) && host !== "192.168.4.1")
       ) {
         hosts.push(host);
         onAdd.forEach(c => c(host));
