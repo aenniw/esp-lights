@@ -18,10 +18,11 @@ import { WifiRequests, ConfigRequests, Requests } from "../../common/request";
 import { ActivityButton } from "../../components/Buttons";
 import Settings from "../../common/settings";
 import Locale from "../../common/locale";
+import Wifi from "../../common/wifi";
 
 const host = "192.168.4.1";
 
-function retry(fn, retriesLeft = 8, interval = 1000) {
+function retry(fn, retriesLeft = 3, interval = 10000) {
   return new Promise((resolve, reject) => {
     return fn()
       .then(resolve)
@@ -67,21 +68,34 @@ function configureAuth({ password: devicePassword }) {
 
 function configureWifi(props, { ssid, password }) {
   const auth = getAuth(props);
-  return retry(() => {
-    return WifiRequests.setConfigSTA(host, { ssid: ssid, pass: password }, auth)
-      .then(
-        () =>
-          new Promise(resolve =>
-            setTimeout(
-              () => resolve(WifiRequests.getConfigSTA(host, auth)),
-              1000
-            )
-          )
-      )
-      .then(({ status }) => {
-        if (!status) throw "Failed to connect to wifi";
-      });
-  });
+  return WifiRequests.setConfigSTA(host, { ssid: ssid, pass: password }, auth)
+    .then(WifiRequests.setConfig(host, { mode: 3, restart: true }, auth))
+    .catch(ignore => {})
+    .then(
+      () =>
+        new Promise((resolve, reject) => {
+          setTimeout(() => {
+            const { ssid, password, type } = props;
+            Wifi.connectSecure(ssid, password, type === "WEP", true, () => {
+              Wifi.getGatewayIPAddress().then(ip => {
+                if (ip === host) {
+                  Wifi.forceWifiUsage(true);
+                  resolve();
+                } else {
+                  reject();
+                }
+              });
+            });
+          }, 10000);
+        })
+    )
+    .then(() =>
+      retry(() => {
+        return WifiRequests.getConfigSTA(host, auth).then(({ status }) => {
+          if (!status) throw "Failed to connect to wifi";
+        });
+      })
+    );
 }
 
 function restartDevice(props) {

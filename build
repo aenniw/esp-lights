@@ -11,7 +11,6 @@ if [[ -d android/ ]]; then
     test -f ${ANDROID_KEYSTORE_PATH##*/} || \
         echo ${ANDROID_KEYSTORE} | base64 -d > ${ANDROID_KEYSTORE_PATH##*/}
 
-    # expo-kit hack for local builds without expo publish
     cp dist/android-index.json android/app/src/main/assets/shell-app-manifest.json
     cp dist/bundles/android-*.js android/app/src/main/assets/shell-app.bundle
 
