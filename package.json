@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "babel-preset-expo": "^7.0.0",
-    "expo-cli": "^3.11.3"
+    "expo-cli": "3.13.0"
   },
   "private": true
 }
