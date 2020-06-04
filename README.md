@@ -1,4 +1,4 @@
-# esp-lights [![Build Status](https://travis-ci.org/aenniw/esp-lights.svg?branch=develop)](https://travis-ci.org/aenniw/esp-lights) [![runs with expo](https://img.shields.io/badge/Runs%20with%20Expo-000.svg?style=flat-square&logo=EXPO&labelColor=f3f3f3&logoColor=000)](https://expo.io/)
+# esp-lights ![Expo build](https://github.com/aenniw/esp-lights/workflows/Expo%20build/badge.svg?branch=develop) [![runs with expo](https://img.shields.io/badge/Runs%20with%20Expo-000.svg?style=flat-square&logo=EXPO&labelColor=f3f3f3&logoColor=000)](https://expo.io/)
 
 Android App for setup/discover/controll ESP8226 lights
 
